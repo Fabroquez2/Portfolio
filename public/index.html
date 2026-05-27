@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="./images/profile-1.png" sizes="32x32" type="image/png">
+    <title>Paul Fabroquez | Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Cinzel:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body style="overflow: hidden;">
+
+    <!-- Preloader / Welcome Loader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <!-- Concentric Circular Dash loaders (Clockwise & Counter-Clockwise Dials) -->
+            <div class="concentric-loader">
+                <svg class="loader-svg" viewBox="0 0 100 100">
+                    <circle class="outer-tick-ring" cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2.5"></circle>
+                    <circle class="inner-tick-ring" cx="50" cy="50" r="28" fill="none" stroke="currentColor" stroke-width="4"></circle>
+                </svg>
+            </div>
+            <span class="preloader-status">LOADING....</span>
+        </div>
+    </div>
+
+    <script>
+        // Preloader transition controller on window load
+        (function() {
+            const startTime = Date.now();
+            window.addEventListener('load', () => {
+                const elapsedTime = Date.now() - startTime;
+                const minimumDisplay = 1400; // Keep visible for 1.4s to showcase the circular dials
+                const delay = Math.max(0, minimumDisplay - elapsedTime);
+
+                setTimeout(() => {
+                    const preloader = document.getElementById('preloader');
+                    if (preloader) {
+                        preloader.classList.add('fade-out');
+                        document.body.style.overflow = '';
+                    }
+                }, delay);
+            });
+        })();
+    </script>
+
+
+
+
+    <!-- Top Navbar -->
+    <nav class="top-navbar" id="topNavbar">
+        <div class="navbar-inner">
+            <!-- Portfolio Brand -->
+            <div class="navbar-brand">
+                <span class="brand-icon"><i class="fas fa-briefcase"></i></span>
+                <span class="brand-text">Portfolio</span>
+            </div>
+
+            <!-- Desktop Nav Links + Dark Mode -->
+            <ul class="navbar-links" id="desktopNavLinks">
+                <li><a href="#home" class="nav-link"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="#skills" class="nav-link"><i class="fas fa-code"></i> Skills</a></li>
+                <li><a href="#projects" class="nav-link"><i class="fas fa-images"></i> Projects</a></li>
+                <li><a href="#certificates" class="nav-link"><i class="fas fa-certificate"></i> Certificates</a></li>
+                <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+
+            <!-- Dark Mode Toggle -->
+            <button class="darkmode-btn" id="darkModeBtn" aria-label="Toggle dark mode" title="Toggle Dark Mode">
+                <i class="fas fa-moon" id="darkModeIcon"></i>
+            </button>
+
+            <!-- Burger Menu (mobile only) -->
+            <button class="burger-btn" id="burgerBtn" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <span class="brand-text">Portfolio</span>
+            <button class="drawer-close" id="drawerClose"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="drawer-links">
+            <li><a href="#home" class="drawer-link"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="#skills" class="drawer-link"><i class="fas fa-code"></i> Skills</a></li>
+            <li><a href="#projects" class="drawer-link"><i class="fas fa-images"></i> Projects</a></li>
+            <li><a href="#certificates" class="drawer-link"><i class="fas fa-certificate"></i> Certificates</a></li>
+            <li><a href="#contact" class="drawer-link"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+        <!-- Dark Mode Toggle in Drawer -->
+        <div class="drawer-darkmode">
+            <span><i class="fas fa-moon"></i> Dark Mode</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="darkModeDrawerToggle">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+    </div>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <!-- Profile Header (Full Width) -->
+    <div class="profile-header-wrapper">
+        <div id="home" class="fb-profile-header">
+            <div class="cover-photo" id="coverPhotoSlider">
+                <!-- CUSTOMIZE_IMAGE: To change the cover photo slideshow, modify or replace these <img> and <video> tags below.
+                     - You can use local paths (e.g., src="./images/my-cover.jpg") or external web links.
+                     - Any size of image/video will automatically scale to fit perfectly.
+                     - For video slides, keep the 'muted playsinline' attributes so browsers allow autoplay. -->
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1600&q=80" alt="Cover Photo 1" class="slide active">
+                <video class="slide" id="videoSlide" width="100%" preload="auto" muted playsinline>
+                    <source src="./images/vid-1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80" alt="Cover Photo 3" class="slide">
+                <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1600&q=80" alt="Cover Photo 4" class="slide">
+                
+                <button id="prevSlide" class="slide-nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button id="nextSlide" class="slide-nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="profile-header-bottom">
+                <div class="profile-pic-container">
+                    <!-- CUSTOMIZE_IMAGE: This profile container flips from profile-1.png to profile-2.jpg after 3 seconds.
+                         - You can change the images inside .profile-pic-front and .profile-pic-back.
+                         - It is interactive: clicking or hovering on it will flip it back and forth. -->
+                    <div class="profile-pic-flipper" id="profileFlipper">
+                        <div class="profile-pic-front">
+                            <img src="./images/profile-1.png" alt="Profile Front" class="profile-pic-large">
+                        </div>
+                        <div class="profile-pic-back">
+                            <img src="./images/profile-2.jpg" alt="Profile Back" class="profile-pic-large">
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-info-container">
+                    <div class="profile-info-left">
+                        <h1 class="bg-name">PAUL FABROQUEZ</h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Left Sidebar (Facebook Style) -->
+        <aside class="sidebar-left">
+            <!-- Section 1.5: Intro Card -->
+            <section class="card intro-card">
+                <h3>Intro</h3>
+                <p class="bio-text">I’m Wako, a student developer with growing skills in full-stack web development and a solid foundation in hardware and networking basics. I’m continuously learning while building reliable, responsive systems.</p>
+                <div class="intro-divider"></div>
+                <ul class="intro-details">
+                    <li><i class="fas fa-briefcase"></i><span>Student Developer <strong>Intern</strong></span></li>
+                    <li><i class="fas fa-graduation-cap"></i><span>Studied <strong>Davao Del Norte State College </strong></span></li>
+                    <li><i class="fas fa-home"></i><span>Lives in <strong>Sto tomas Davao Del Norte, Philippines</strong></span></li>
+                    <li><i class="fas fa-globe"></i><span>Website: <a href="#home"><strong>Fabroquez.dev</strong></a></span></li>
+                    <li><i class="fas fa-rss"></i><span>Open to Collaboration and New Opportunities <strong></strong></span></li>
+                </ul>
+            </section>
+
+            <!-- Section 2: Skills -->
+            <section id="skills" class="dark-skills-card">
+                <h3>Skills</h3>
+                
+                <div class="skill-bar-container">
+                    <div class="skill-info"><span class="skill-name">JavaScript</span><span class="skill-pct">55%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 55%;"></div></div>
+                </div>
+                
+                <div class="skill-bar-container">
+                    <div class="skill-info"><span class="skill-name">PHP</span><span class="skill-pct">60%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 60%;"></div></div>
+                </div>
+                
+                <div class="skill-bar-container">
+                    <div class="skill-info"><span class="skill-name">HTML/CSS</span><span class="skill-pct">80%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 80%;"></div></div>
+                </div>
+                
+                <div class="skill-bar-container">
+                    <div class="skill-info"><span class="skill-name">MySQL</span><span class="skill-pct">55%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 55%;"></div></div>
+                </div>
+                
+                <div class="skill-bar-container">
+                    <div class="skill-info"><span class="skill-name">Laravel</span><span class="skill-pct">50%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 50%;"></div></div>
+                </div>
+                
+                <div class="skill-bar-container">
+                    <div class="skill-info"><span class="skill-name">Bootstrap</span><span class="skill-pct">65%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 65%;"></div></div>
+                </div>
+
+                <div class="skill-bar-container">
+                    <div class="skill-info"><span class="skill-name">N8N Automation (Learning)</span><span class="skill-pct">5%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 5%;"></div></div>
+                </div>
+            </section>
+        </aside>
+
+        <!-- Feed / Main Area -->
+        <div class="feed">
+
+            <!-- Section 3: Quote -->
+            <section id="quote" class="card post quote-post animate-on-scroll">
+                <div class="post-header">
+                    <img src="./images/profile-1.png" alt="Profile" class="post-avatar">
+                    <div class="post-info">
+                        <h3>Inspiration</h3>
+                        <span>Yesterday at 9:00 AM · <i class="fas fa-globe-americas"></i></span>
+                    </div>
+                </div>
+                <div class="post-content quote-content">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <h2>Success is not final, failure is not fatal: It is the courage to continue that counts.</h2>
+                    <p class="quote-author">- Winston Churchill</p>
+                </div>
+
+            </section>
+
+            <!-- Section 4: Projects -->
+            <section id="projects" class="card post animate-on-scroll">
+                <div class="post-header">
+                    <img src="./images/profile-1.png" alt="Profile" class="post-avatar">
+                    <div class="post-info">
+                        <h3>Recent Projects</h3>
+                        <span>May 15 · <i class="fas fa-globe-americas"></i></span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p class="projects-intro-text">Check out some of my recent work! Hover over the cards for details.</p>
+                    
+                    <!-- CUSTOMIZE_CONTENT: Customize or add your projects below.
+                         IMPORTANT: The 'data-project-id' attribute on each card MUST exactly match 
+                         its corresponding key inside the 'projectsData' object in public/js/app.js! -->
+                    <div class="projects-container">
+                        <!-- Project 1 -->
+                        <div class="project-card" data-project-id="swiftcart">
+                            <!-- CUSTOMIZE_IMAGE: Change this project preview image AND remember to also update the corresponding images list in public/js/app.js under projectsData.swiftcart -->
+                            <img src="./images/project-1.jpg" alt="SwiftCart E-Commerce">
+                            <div class="project-details">
+                                <div class="project-meta">
+                                    <h4>Campus Chat Local Messaging System</h4>
+                                    <p>Campus Chat is a locally hosted messaging system designed for internal communication within a campus network.</p>
+                                    <div class="tech-tags">
+                                        <span class="tech-tag">Browser DevTools</span>
+                                        <span class="tech-tag">Manual Exploratory Testing</span>
+                                        <span class="tech-tag">Error Logging Tools</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="project-card" data-project-id="devanalytics">
+                            <!-- CUSTOMIZE_IMAGE: Change this project preview image AND remember to also update the corresponding images list in public/js/app.js under projectsData.devanalytics -->
+                            <img src="./images/project-a-1.jpg" alt="DevAnalytics Dashboard">
+                            <div class="project-details">
+                                <div class="project-meta">
+                                    <h4>Motorcycle Parts and Accessories Management System</h4>
+                                    <p>The Motorcycle Parts and Accessories Management System is designed to streamline inventory tracking, product cataloging, and customer transactions for motorcycle shops.</p>
+                                    <div class="tech-tags">
+                                        <span class="tech-tag">HTML</span>
+                                        <span class="tech-tag">CSS</span>
+                                        <span class="tech-tag">JavaScript</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="project-card" data-project-id="smartchat">
+                            <!-- CUSTOMIZE_IMAGE: Change this project preview image AND remember to also update the corresponding images list in public/js/app.js under projectsData.smartchat -->
+                            <img src="./images/project-b-1.jpg" alt="SmartChat AI Messenger">
+                            <div class="project-details">
+                                <div class="project-meta">
+                                    <h4>Water Refilling Station Management System</h4>
+                                    <p>The Water Refilling Station Management System is designed to simplify operations.</p>
+                                    <div class="tech-tags">
+                                        <span class="tech-tag">HTML</span>
+                                        <span class="tech-tag">CSS</span>
+                                        <span class="tech-tag">JavaScript</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 4 -->
+
+            </section>
+
+            <!-- Section 4.2: Certificates -->
+            <section id="certificates" class="card post animate-on-scroll">
+                <div class="post-header">
+                    <img src="./images/profile-1.png" alt="Profile" class="post-avatar">
+                    <div class="post-info">
+                        <h3>Professional Certificates</h3>
+                        <span>May 12 · <i class="fas fa-globe-americas"></i></span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p class="projects-intro-text">Check out some of my professional certifications and credentials. Click to view verification details.</p>
+                    
+                    <!-- CUSTOMIZE_CONTENT: Customize or add your real certificates below.
+                         IMPORTANT: The 'data-cert-id' attribute on each card MUST exactly match 
+                         its corresponding key inside the 'certsData' object in public/js/app.js! -->
+                    <div class="certs-container">
+                        <!-- Certificate 1 -->
+                        <div class="cert-card" data-cert-id="meta-frontend">
+                            <img src="./images/cert-1.png" alt="Meta Front-End Developer">
+                            <div class="cert-details">
+                                <div class="cert-issuer">Advanced Seminar Series</div>
+                                <h4>Seminar</h4>
+                                <p>Journey from Science Practitioner to Information Technology Specialist.</p>
+                            </div>
+                        </div>
+
+                        <!-- Certificate 2 -->
+                        <div class="cert-card" data-cert-id="aws-cloud">
+                            <img src="./images/cert-2.png" alt="AWS Cloud Practitioner">
+                            <div class="cert-details">
+                                <div class="cert-issuer">Advanced Seminar Series</div>
+                                <h4>Seminar</h4>
+                                <p>The Power of Color in Graphic Design.</p>
+                            </div>
+                        </div>
+
+                        <!-- Certificate 3 -->
+                        <div class="cert-card" data-cert-id="google-it">
+                            <img src="./images/cert-3.png" alt="Google IT Support">
+                            <div class="cert-details">
+                                <div class="cert-issuer">Google</div>
+                                <h4>Google IT Support Professional</h4>
+                                <p>Provides troubleshooting skills, customer service, networking, operating systems, system administration, and security.</p>
+                            </div>
+                        </div>
+
+                        <!-- Certificate 4 -->
+                        <div class="cert-card" data-cert-id="freecodecamp-fullstack">
+                            <img src="./images/cert-4.png" alt="freeCodeCamp Full Stack">
+                            <div class="cert-details">
+                                <div class="cert-issuer">freeCodeCamp</div>
+                                <h4>Full Stack Developer Certification</h4>
+                                <p>Demonstrates proficiency in responsive web design, algorithms, front-end libraries, APIs, microservices, and databases.</p>
+                            </div>
+                        </div>
+
+                        <!-- Certificate 5 -->
+                        <div class="cert-card" data-cert-id="scrummaster">
+                            <img src="./images/cert-5.jpeg" alt="Scrum Alliance Certified ScrumMaster">
+                            <div class="cert-details">
+                                <div class="cert-issuer">Scrum Alliance</div>
+                                <h4>Certified ScrumMaster (CSM)</h4>
+                                <p>Validates knowledge of Scrum frameworks, team roles, agile events, and sprint planning execution.</p>
+                            </div>
+                        </div>
+
+                        <!-- Certificate 6 -->
+                        <div class="cert-card" data-cert-id="oracle-java">
+                            <img src="./images/cert-6.png" alt="Oracle Certified Java Associate">
+                            <div class="cert-details">
+                                <div class="cert-issuer">Oracle</div>
+                                <h4>Oracle Certified Associate, Java SE 8</h4>
+                                <p>Verifies programming foundation, object-oriented concepts, algorithm design, and Java syntax rules.</p>
+                            </div>
+                        </div>
+
+                        <div class="cert-card" data-cert-id="oracle2-java">
+                            <img src="./images/cert-7.jpg" alt="Oracle Certified Java Associate">
+                            <div class="cert-details">
+                                <div class="cert-issuer">Oracle</div>
+                                <h4>Oracle Certified Associate, Java SE 8</h4>
+                                <p>Verifies programming foundation, object-oriented concepts, algorithm design, and Java syntax rules.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4.5: Work & Education Timeline -->
+            <section id="timeline" class="card post animate-on-scroll">
+                <div class="post-header">
+                    <img src="./images/profile-1.png" alt="Profile" class="post-avatar">
+                    <div class="post-info">
+                        <h3>Work & Education History</h3>
+                        <span>May 10 · <i class="fas fa-globe-americas"></i></span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <div class="timeline-container">
+                        <!-- Timeline Item 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-badge"><i class="fas fa-briefcase"></i></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">Freelance Web Developer</h4>
+                                    <p><small class="text-muted"><i class="far fa-calendar-alt"></i> 2023 - Present</small></p>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Crafting high-quality client portals, landing pages, and customized administration databases. Integrated robust secure frontends and functional APIs for diverse startups.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Timeline Item 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-badge"><i class="fas fa-code"></i></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">Hardware and Software Tester Intern</h4>
+                                    <p><small class="text-muted"><i class="far fa-calendar-alt"></i> Feb - May 2025 · Nehemiah Solutions</small></p>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Performed system validation and troubleshooting for both hardware and software components. Conducted network and device testing, verified system stability, and collaborated with developers to identify and resolve bugs before deployment.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Timeline Item 3 -->
+                        <div class="timeline-item">
+                            <div class="timeline-badge"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">BS in Information Technology</h4>
+                                    <p><small class="text-muted"><i class="far fa-calendar-alt"></i> 2022 - Present · Davao Del Norte State College</small></p>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Specialized in database analytics and custom software engineering. Actively directed collegiate dev associations and spearheaded multi-tier academic project frameworks.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Section 5: Contact -->
+            <section id="contact" class="card post animate-on-scroll">
+                <div class="post-header">
+                    <img src="./images/profile-1.png" alt="Profile" class="post-avatar">
+                    <div class="post-info">
+                        <h3>Let's Connect</h3>
+                        <span>Just now · <i class="fas fa-globe-americas"></i></span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p class="contact-intro-text">Have a project in mind, or just want to discuss web systems? Drop me a line directly below, and let's construct something awesome together!</p>
+                    <form id="contactForm" class="contact-form">
+                        <div class="input-group">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-comment-alt input-icon textarea-icon"></i>
+                            <textarea id="message" rows="4" placeholder="Write your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    </form>
+                    <div id="formMessage" class="form-message"></div>
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- Right Sidebar -->
+        <aside class="sidebar-right">
+            <!-- Sponsored Ad -->
+            <div class="card sponsor-card">
+                <h4>Sponsored</h4>
+                <div class="sponsor-content">
+                    <div class="sponsor-img-container">
+                        <!-- CUSTOMIZE_IMAGE: Replace the sponsored ad image below with your own (e.g. images/sponsored.jpg) -->
+                        <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=300&q=80" alt="Sponsor Ad">
+                    </div>
+                    <div class="sponsor-info">
+                        <strong>Open for Collaboration</strong>
+                        <p>Available for high-quality contract & freelance projects.</p>
+                        <a href="#contact" class="sponsor-btn-mini">Hire Me Today <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contacts Info Card -->
+            <div class="card contacts-card">
+                <h4>Connect with Me</h4>
+                <ul class="contacts-links">
+                    <li><a href="mailto:paulfabroquez28@gmail.com"><i class="fas fa-envelope"></i><span>paulfabroquez28@gmail.com</span></a></li>
+                    <li><a href="tel:+09977331455"><i class="fas fa-phone"></i><span>+09977331455</span></a></li>
+                    <li><a href="https://www.linkedin.com/in/paul-fabroquez-0632133bb?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i><span>LinkedIn Profile</span></a></li>
+                    <li><a href="https://github.com" target="_blank"><i class="fab fa-github"></i><span>GitHub Profile</span></a></li>
+                </ul>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <!-- Project Details Fullscreen Modal -->
+    <div class="project-modal" id="projectModal" aria-hidden="true" role="dialog">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        
+        <!-- Project/Certificate Nav Buttons -->
+        <button class="modal-nav-arrow prev-project" id="modalPrevProjectBtn" aria-label="Previous Item"><i class="fas fa-chevron-left"></i></button>
+        <button class="modal-nav-arrow next-project" id="modalNextProjectBtn" aria-label="Next Item"><i class="fas fa-chevron-right"></i></button>
+        
+        <div class="modal-wrapper">
+            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close details"><i class="fas fa-times"></i></button>
+            <div class="modal-grid">
+                <!-- Media Gallery Section -->
+                <div class="modal-media-column">
+                    <div class="modal-main-view">
+                        <img src="" alt="Main Preview" id="modalMainImg" class="modal-main-img">
+                        <button class="modal-arrow prev-arrow" id="modalPrevBtn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="modal-arrow next-arrow" id="modalNextBtn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="modal-thumbs" id="modalThumbs">
+                        <!-- Clickable thumbnails generated dynamically -->
+                    </div>
+                </div>
+                <!-- Details Section -->
+                <div class="modal-info-column">
+                    <h2 class="modal-title" id="modalProjTitle"></h2>
+                    <div class="modal-tags" id="modalProjTags"></div>
+                    <div class="modal-body-content">
+                        <h4 class="section-subheading">About the Project</h4>
+                        <p class="modal-desc" id="modalProjDesc"></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
